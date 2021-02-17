@@ -25,7 +25,7 @@ module RunteqNormal
     config.generators do |g|
       g.assets false # CSS, JavaScriptファイル生成せず
       g.skip_routes false # trueならroutes.rb変更せず、falseなら通常通り変更
-      g.helper false 
+      g.helper false
       g.test_framework false
     end
     # Settings in config/environments/* take precedence over those specified here.
