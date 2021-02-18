@@ -9,9 +9,13 @@
     <%= javascript_include_tag 'application' %>
   </head>
   
-  <%= render 'shared/header' %>
-    <body>
-      <%= yield %>
-    </body>
-  <%= render 'shared/footer' %>
+  <body>
+    <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+    <% end %>
+    <%= yield %>
+    <%= render 'shared/footer' %>
+  </body>
 </html>
