@@ -1,0 +1,16 @@
+#ビューに関する日本語訳をこのファイルにまとめて記述してください。
+ja:
+  users:
+    index:
+      title: 'ユーザ一覧'
+    show:
+      # 引数の指定もできる。
+      title: '%{user_name}さんのユーザ情報'
+    edit:
+      # view側で t(.titile), user_name: @user.name みたいな感じで設定できる
+      title: '%{user_name}さんのユーザ情報を編集'
+  user_sessions:
+    new:
+      email: メールアドレス
+      password: パスワード
+      login: ログイン
