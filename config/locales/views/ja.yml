@@ -5,10 +5,18 @@
      register: '登録'
      logout: 'ログアウト'
    users:
+     create:
+       success: 'ユーザー登録が完了しました'
+       fail: 'ユーザー登録に失敗しました'
      new:
        title: 'ユーザー登録'
        to_login_page: 'ログインページへ'
    user_sessions:
+     create:
+       success: 'ログインしました'
+       fail: 'ログインに失敗しました'
+     destroy:
+       success: 'ログアウトしました'
      new:
        email: 'メールアドレス'
        password: 'パスワード'

@@ -35,7 +35,8 @@
             <%= image_tag 'sample.jpg', class:'rounded-circle mr15', width: '40px', height: '40px' %>
           </a>
           <div class='dropdown-menu dropdown-menu-right'>
-            <div class='dropdown-item'>らんてっく たろう</div>
+            <div class='dropdown-item'><%= current_user.decorate.full_name %></div>
+
             <div class='dropdown-divider'></div>
             <a class='dropdown-item' href='#'>プロフィール</a>
             <%= link_to "プロフィール編集", edit_user_path(current_user.id), class: 'dropdown-item' %>
