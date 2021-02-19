@@ -12,6 +12,7 @@ RSpec.describe 'ログイン・ログアウト', type: :system do
           fill_in 'パスワード', with: '12345678'
           click_button 'ログイン'
           expect(current_path).to eq root_path
+          expect(page).to have_content('ログインしました'), 'フラッシュメッセージ「ログインしました」が表示されていません'
         end
       end
 
@@ -22,6 +23,7 @@ RSpec.describe 'ログイン・ログアウト', type: :system do
           fill_in 'パスワード', with: '1234'
           click_button 'ログイン'
           expect(current_path).to eq('/login'), 'ログイン失敗時にログイン画面に戻ってきていません'
+          expect(page).to have_content('ログインに失敗しました'), 'フラッシュメッセージ「ログインに失敗しました」が表示されていません'
         end
       end
     end
@@ -34,6 +36,7 @@ RSpec.describe 'ログイン・ログアウト', type: :system do
         find('#header-profile').click
         click_on('ログアウト')
         expect(current_path).to eq root_path
+        expect(page).to have_content('ログアウトしました'), 'フラッシュメッセージ「ログアウトしました」が表示されていません'
       end
     end
   end

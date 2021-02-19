@@ -19,8 +19,9 @@ RSpec.describe '共通系', type: :system do
   end
 
   context 'ログイン後' do
+    let(:user) { create(:user) }
     before do
-      login_as_general
+      login_as_user(user)
       visit root_path
     end
     describe 'ヘッダー' do
