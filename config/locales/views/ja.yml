@@ -9,6 +9,12 @@ ja:
     edit:
       # view側で t(.titile), user_name: @user.name みたいな感じで設定できる
       title: '%{user_name}さんのユーザ情報を編集'
+    new:
+      last_name: "性"
+      first_name: "名"
+      email: "メールアドレス"
+      password: "パスワード"
+      password_confirmation: "パスワード確認"
   user_sessions:
     new:
       email: メールアドレス

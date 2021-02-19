@@ -9,7 +9,7 @@ ja:
         user:
           id: ID
           # view側： User.human_attribute_name :name => "名前" /t("activerecord.attributes.user.name")と同じ
-          first_name: 名前
+          first_name: 名
           last_name: 姓
           email: メールアドレス
           password: パスワード
