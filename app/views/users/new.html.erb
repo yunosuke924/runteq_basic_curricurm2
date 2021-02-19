@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <h1>ユーザー登録</h1>
+            <h1><%= t '.title' %></h1>
             <%= form_with(model: @user, local: true) do |form| %>
                 <% if @user.errors.any? %>
                     <div id="error_explanation">
@@ -40,12 +40,12 @@
                 </div>
 
                 <div class="actions">
-                    <%= form.submit '登録', class: "btn btn-primary" %>
+                    <%= form.submit (t 'defaults.register'), class: "btn btn-primary" %>
                 </div>
             <% end %>
 
             <div class='text-center'>
-                <%= link_to 'ログインページへ', login_path %>
+                <%= link_to (t '.to_login_page'), login_path %>
             </div>
         </div>
     </div>

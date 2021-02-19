@@ -1,22 +1,27 @@
 #ビューに関する日本語訳をこのファイルにまとめて記述してください。
-ja:
-  users:
-    index:
-      title: 'ユーザ一覧'
-    show:
-      # 引数の指定もできる。
-      title: '%{user_name}さんのユーザ情報'
-    edit:
-      # view側で t(.titile), user_name: @user.name みたいな感じで設定できる
-      title: '%{user_name}さんのユーザ情報を編集'
-    new:
-      last_name: "性"
-      first_name: "名"
-      email: "メールアドレス"
-      password: "パスワード"
-      password_confirmation: "パスワード確認"
-  user_sessions:
-    new:
-      email: メールアドレス
-      password: パスワード
-      login: ログイン
+ ja:
+   defaults:
+     login: 'ログイン'
+     register: '登録'
+     logout: 'ログアウト'
+   users:
+     new:
+       title: 'ユーザー登録'
+       to_login_page: 'ログインページへ'
+   user_sessions:
+     new:
+       email: 'メールアドレス'
+       password: 'パスワード'
+       title: 'ログイン'
+       to_register_page: '登録ページへ'
+       password_forget: 'パスワードをお忘れの方はこちら'
+   boards:
+     index:
+       title: '掲示板一覧'
+     new:
+       title: '掲示板作成'
+     bookmarks:
+       title: 'ブックマーク一覧'
+   profiles:
+     show:
+       title: 'プロフィール'
