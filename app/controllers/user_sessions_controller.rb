@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
     @user = login(params[:email], params[:password])
     if @user
       # flash[:success] = 'ログインしました'
-      redirect_to root_path, success: t('.success')
+      redirect_to boards_path, success: t('.success')
     else
       flash.now[:danger] = t('.fail')
       render action: 'new'

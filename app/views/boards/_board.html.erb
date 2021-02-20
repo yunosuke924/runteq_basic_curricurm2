@@ -1,0 +1,24 @@
+<div class="col-sm-12 col-lg-4 mb-3">
+    <div id="board-id-1">
+        <div class="card"><img class="card-img-top" src="/assets/board_placeholder.png" width="300" height="200"/>
+            <div class="card-body">
+                <h4 class="card-title">
+                <%= link_to "#{board.title}", '#' %>
+                </h4>
+                <div class='mr10 float-right'>
+                <%= link_to '#', id: 'button-edit-#{board.id}' do %>
+                    <%= icon 'fa', 'pen' %>
+                <% end %>
+                <%= link_to '#', id: 'button-delete-#{board.id}', method: :delete, data: {confirm: ''} do %>
+                    <%= icon 'fas', 'trash' %>
+                <% end %>
+                </div>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><i class="far fa-user"></i> <%= board.user.decorate.full_name %></li>
+                    <li class="list-inline-item"><i class="far fa-calendar"></i><%= l board.created_at, format: :long %></li>
+                </ul>
+                <p class="card-text"><%= board.body %></p>
+            </div>
+        </div>
+    </div>
+</div>
