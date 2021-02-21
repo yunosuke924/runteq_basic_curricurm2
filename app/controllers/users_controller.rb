@@ -13,7 +13,6 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @errors_messages = []
   end
 
   # GET /users/1/edit
@@ -27,7 +26,6 @@ class UsersController < ApplicationController
       # flash[:success] = 'ユーザー登録が完了しました'
       redirect_to login_path, success: t('.success')
     else
-      @errors_messages = @user.errors.full_messages
       flash.now[:danger] = t('.fail')
       render :new
     end

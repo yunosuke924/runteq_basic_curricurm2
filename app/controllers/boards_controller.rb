@@ -5,7 +5,6 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new
-    @errors_messages = []
   end
 
   def create
@@ -13,7 +12,6 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to boards_path, success: (t '.success')
     else
-      @errors_messages = @board.errors.full_messages
       flash.now[:danger] = t '.fail'
       render :new
     end
@@ -22,6 +20,6 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:title, :body)
+    params.require(:board).permit(:title, :body, :board_image)
   end
 end

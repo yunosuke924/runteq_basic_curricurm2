@@ -2,11 +2,6 @@
   <div class="row">
     <div class="col-lg-8 offset-lg-2">
       <h1>掲示板作成</h1>
-
-      <% if @errors_messages.any? %>
-        <%= render 'shared/error_message', errors_messages: @errors_messages %>
-      <% end %>
-
       <%= render 'form', board: @board %>
     </div>
   </div>

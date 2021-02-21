@@ -19,6 +19,7 @@ ja:
         board:
           title: タイトル
           body: 本文
+          board_image: サムネイル
   # 全てのmodelで共通して使用するattributesを定義
   attributes:
     created_at: 作成日

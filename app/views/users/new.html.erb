@@ -2,11 +2,8 @@
     <div class="row">
         <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <h1><%= t '.title' %></h1>
-            <% if @errors_messages.any? %>
-                <%= render 'shared/error_message', errors_messages: @errors_messages %>
-            <% end %>
             <%= form_with(model: @user, local: true) do |form| %>
-
+                <%= render 'shared/error_message', object: form.object %>
                 <div class="form-group">
                     <%= form.label :first_name %><br/>
                     <%= form.text_field :first_name, class: "form-control" %>
