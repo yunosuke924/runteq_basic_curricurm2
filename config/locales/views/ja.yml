@@ -28,6 +28,9 @@
        title: '掲示板一覧'
      new:
        title: '掲示板作成'
+     create:
+       success: '掲示板を作成しました'
+       fail: '掲示板を作成できませんでした'
      bookmarks:
        title: 'ブックマーク一覧'
    profiles:
