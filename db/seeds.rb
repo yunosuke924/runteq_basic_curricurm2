@@ -1,22 +1,17 @@
-User.create!(first_name: 'Sakamoto',
-             last_name: 'Ryoma',
-             email: 'ryoma@mail.com',
-             password: 'foobar',
-             password_confirmation: 'foobar',
-             created_at: Time.now,
-             updated_at: Time.now)
-
-20.times do |n|
-
-    title = Faker::Games::Pokemon.name
-    body = Faker::Games::Pokemon.move
-    user = User.find_by(email: 'ryoma@mail.com')
-
-    
-    Board.create!(title: title, 
-                    body: body,
-                    user_id: user.id,
-                    created_at: Time.now,
-                    updated_at: Time.now)
-                    
-end
+10.times do
+    User.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        email: Faker::Internet.email,
+        password: '12345678',
+        password_confirmation: '12345678'
+    )
+  end
+  
+  20.times do |index|
+    Board.create!(
+        user: User.offset(rand(User.count)).first,
+        title: "タイトル#{index}",
+        body: "本文#{index}"
+    )
+  end

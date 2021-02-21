@@ -14,7 +14,7 @@
     <div class="col-12">
       <div class="row">
         <% if @boards.any? %>
-            <%= render partial: 'board', collection: @boards  %>
+            <%= render @boards %>
         <% else %>
           <p>掲示板がありません</p>
         <% end %>

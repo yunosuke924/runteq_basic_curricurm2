@@ -1,6 +1,11 @@
 class BoardsController < ApplicationController
-  before_action :require_login
+
   def index
-    @boards = Board.all
+    @boards = Board.all.includes(:user).order(created_at: :desc)
   end
+
+  def new
+    @board = Board.new
+  end
+
 end

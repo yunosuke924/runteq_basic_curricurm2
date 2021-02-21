@@ -16,6 +16,9 @@ ja:
           password: パスワード
           password_confirmation: パスワード確認
           crypted_password: パスワード
+        board:
+          title: タイトル
+          body: 本文
   # 全てのmodelで共通して使用するattributesを定義
   attributes:
     created_at: 作成日
