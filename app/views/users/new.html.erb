@@ -2,18 +2,10 @@
     <div class="row">
         <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <h1><%= t '.title' %></h1>
+            <% if @errors_messages.any? %>
+                <%= render 'shared/error_message', errors_messages: @errors_messages %>
+            <% end %>
             <%= form_with(model: @user, local: true) do |form| %>
-                <% if @user.errors.any? %>
-                    <div id="error_explanation">
-                    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-                    <ul>
-                    <% @user.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                    <% end %>
-                    </ul>
-                    </div>
-                <% end %>
 
                 <div class="form-group">
                     <%= form.label :first_name %><br/>
@@ -38,7 +30,6 @@
                     <%= form.label :password_confirmation %><br/>
                     <%= form.password_field :password_confirmation, class: "form-control" %>
                 </div>
-
                 <div class="actions">
                     <%= form.submit (t 'defaults.register'), class: "btn btn-primary" %>
                 </div>

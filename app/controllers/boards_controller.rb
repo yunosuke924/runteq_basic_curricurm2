@@ -5,14 +5,15 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new
+    @errors_messages = []
   end
 
   def create
-    @board = Board.new(board_params)
-    @board.user_id = current_user.id
+    @board = current_user.boards.build(board_params)
     if @board.save
       redirect_to boards_path, success: (t '.success')
     else
+      @errors_messages = @board.errors.full_messages
       flash.now[:danger] = t '.fail'
       render :new
     end
