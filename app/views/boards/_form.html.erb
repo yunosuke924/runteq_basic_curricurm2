@@ -10,7 +10,10 @@
   </div>
   <div class="field">
     <%= form.label :board_image %><br/>
-    <%= form.file_field :board_image %>
+    <%= form.file_field :board_image, onchange: 'previewImage()', class: 'form-control mb-3', accept: 'image/*' %>
+  </div>
+  <div>
+    <%= image_tag board.board_image.url, id: 'preview', size: '300x200' %>
   </div>
   <div class="actions">
     <%= form.submit class: "btn btn-primary" %>

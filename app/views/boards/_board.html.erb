@@ -1,13 +1,7 @@
 <div class="col-sm-12 col-lg-4 mb-3">
     <div id="board-id-1">
         <div class="card">
-
-            <% if board.board_image? %>
-                <%= image_tag board.board_image.url %>
-            <% else %>
-                <img class="card-img-top" src="/assets/board_placeholder.png" width="300" height="200"/>
-            <% end %>
-
+            <%= image_tag board.board_image.url, class: "card-img-top", size: '300×200' %>
             <div class="card-body">
                 <h4 class="card-title">
                 <%= link_to "#{board.title}", '#' %>
