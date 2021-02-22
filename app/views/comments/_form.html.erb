@@ -1,0 +1,13 @@
+<%= form_with(model: [board, board.comments.build], local: true)do |form| %>
+    <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="form-group">
+            <%= form.label :body %><br/>
+            <%= form.text_field :body, class: "form-control" %>
+        </div>
+        <div class="actions">
+            <%= form.submit class: "btn btn-primary" %>
+        </div>
+    </div>
+    </div>
+<% end %>

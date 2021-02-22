@@ -4,7 +4,7 @@
             <%= image_tag board.board_image.url, class: "card-img-top", size: '300×200' %>
             <div class="card-body">
                 <h4 class="card-title">
-                <%= link_to "#{board.title}", '#' %>
+                <%= link_to "#{board.title}", board %>
                 </h4>
                 <div class='mr10 float-right'>
                 <%= link_to '#', id: 'button-edit-#{board.id}' do %>

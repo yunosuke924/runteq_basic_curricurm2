@@ -6,6 +6,7 @@ ja:
       user: ユーザー
       # model毎に定義したいattributesを記述
       board: '掲示板'
+      comment: 'コメント'
     attributes:
         user:
           id: ID
@@ -20,6 +21,8 @@ ja:
           title: タイトル
           body: 本文
           board_image: サムネイル
+        comment:
+          body: コメント
   # 全てのmodelで共通して使用するattributesを定義
   attributes:
     created_at: 作成日
