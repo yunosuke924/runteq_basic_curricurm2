@@ -27,5 +27,11 @@
   <%= render 'comments/form', board: @board %>
 
   <!-- コメントエリア -->
-  <%= render partial:'comments/comment', collection: @board.comments.order(created_at: :desc), as: :cmt %>
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <table id="js-table-comment" class="table">
+        <%= render partial:'comments/comment', collection: @board.comments.order(created_at: :desc), as: :cmt %>
+      </table>
+    </div>
+  </div>
 </div>

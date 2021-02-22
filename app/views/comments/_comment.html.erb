@@ -1,35 +1,25 @@
-<div class="row">
-    
-    <div class="col-lg-8 offset-lg-2">
-      <table id="js-table-comment" class="table">
-        <tr id="comment-25">
-          <td style="width: 60px">
-            <%= image_tag "board_placeholder.png" , class: "rounded-circle", width: "50px", height: "50px" %>
-          </td>
-          <td>
-            <h3 class="small"><%= User.find(cmt.user_id).decorate.full_name %></h3>
-                <div id="js-comment-25">
-                    <p><%= cmt.body %></p>
-                </div>
-          </td>
-
-            <% if cmt.user_id == current_user.id %>
-           
-            <td class="action">
-                <ul class="list-inline justify-content-center" style="float: right;">
-                <li class="list-inline-item">
-                    <a href="#"><i class='fa fa-pencil-ruler'></i></a>
-                </li>
-                <li class="list-inline-item">
-                <%= link_to comment_path(cmt.id), method: :delete do %>
-                    <span class= "fa fa-trash"></span>
-                <% end %>
-                </li>
-                </ul>
-            </td>
-            <% end %>
-        </tr>
-      </table>
-    </div>
-
-</div>
+<tr id="comment-<%= cmt.id %>">
+  <td style="width: 60px">
+    <%= image_tag "board_placeholder.png" , class: "rounded-circle", width: "50px", height: "50px" %>
+  </td>
+  <td>
+    <h3 class="small"><%= User.find(cmt.user_id).decorate.full_name %></h3>
+      <div id="js-comment-<%= cmt.id %>">
+          <p><%= cmt.body %></p>
+      </div>
+  </td>
+  <% if cmt.user_id == current_user.id %> 
+    <td class="action">
+      <ul class="list-inline justify-content-center" style="float: right;">
+        <li class="list-inline-item">
+          <a href="#"><i class='fa fa-pencil-ruler'></i></a>
+        </li>
+        <li class="list-inline-item">
+          <%= link_to comment_path(cmt.id), method: :delete do %>
+            <span class= "fa fa-trash"></span>
+          <% end %>
+        </li>
+      </ul>
+    </td>
+  <% end %>
+</tr>
