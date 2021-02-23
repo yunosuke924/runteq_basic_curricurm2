@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  w private
+   private
 
   def comment_params
     params.require(:comment).permit(:body).merge(board_id: params[:board_id])
