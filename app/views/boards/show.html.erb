@@ -1,3 +1,5 @@
+<% content_for(:title, @board.title) %>
+
 <div class="container pt-5">
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
@@ -11,6 +13,7 @@
             </div>
             <div class='col-md-9'>
               <h3 style='display: inline;'><%= @board.title %></h3>
+              <%= render 'crud_menus', board: @board %>
               <ul class="list-inline">
                 <li class="list-inline-item"><%= @board.user.decorate.full_name%></li>
                 <li class="list-inline-item"><%= l @board.created_at, format: :long %></li>
@@ -22,16 +25,8 @@
       </article>
     </div>
   </div>
-
   <!-- コメントフォーム -->
-  <%= render 'comments/form', board: @board %>
-
+  <%= render 'comments/form', {board: @board, comment: @comment } %>
   <!-- コメントエリア -->
-  <div class="row">
-    <div class="col-lg-8 offset-lg-2">
-      <table id="js-table-comment" class="table">
-        <%= render partial:'comments/comment', collection: @board.comments.order(created_at: :desc), as: :cmt %>
-      </table>
-    </div>
-  </div>
+  <%= render 'comments/comments', { comments:  @comments } %>
 </div>

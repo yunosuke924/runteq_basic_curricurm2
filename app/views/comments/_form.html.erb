@@ -1,13 +1,11 @@
-<%= form_with(model: [board, board.comments.build], local: true)do |form| %>
-    <div class="row mb-3">
-    <div class="col-lg-8 offset-lg-2">
-        <div class="form-group">
-            <%= form.label :body %><br/>
-            <%= form.text_field :body, class: "form-control" %>
-        </div>
-        <div class="actions">
-            <%= form.submit('投稿',class: "btn btn-primary") %>
-        </div>
-    </div>
-    </div>
-<% end %>
+<div class="row mb-3">
+<div class="col-lg-8 offset-lg-2">
+    <%= form_with model: comment, url: [board,comment], local: true do |form| %>
+            <div class="form-group">
+                <%= form.label :body %>
+                <%= form.text_area :body, class: "form-control mb-3", id: 'js-new-comment-body', row: 4, placeholder: Comment.human_attribute_name(:body) %>
+                <%= form.submit t('defaults.post'),class: "btn btn-primary" %>
+            </div>
+    <% end %>
+</div>
+</div>

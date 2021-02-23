@@ -6,15 +6,7 @@
                 <h4 class="card-title">
                 <%= link_to "#{board.title}", board %>
                 </h4>
-                <div class='mr10 float-right'>
-                <%= link_to '#', id: 'button-edit-#{board.id}' do %>
-                    <%= icon 'fa', 'pen' %>
-                <% end %>
-                <%= link_to '#', id: 'button-delete-#{board.id}', method: :delete, data: {confirm: ''} do %>
-                    <%= icon 'fas', 'trash' %>
-                <% end %>
-                </div>
-
+                <%= render 'crud_menus', board: board %>
                 <ul class="list-inline">
                     <li class="list-inline-item"><i class="far fa-user"></i> <%= board.user.decorate.full_name %></li>
                     <li class="list-inline-item"><i class="far fa-calendar"></i><%= l board.created_at, format: :long %></li>

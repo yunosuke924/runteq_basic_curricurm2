@@ -4,6 +4,7 @@ ja:
     login: 'ログイン'
     register: '登録'
     logout: 'ログアウト'
+    post: '投稿'
   users:
     create:
       success: 'ユーザー登録が完了しました'

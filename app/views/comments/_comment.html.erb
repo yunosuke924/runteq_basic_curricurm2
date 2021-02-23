@@ -1,21 +1,26 @@
-<tr id="comment-<%= cmt.id %>">
+<tr id="comment-<%= comment.id %>">
   <td style="width: 60px">
-    <%= image_tag "board_placeholder.png" , class: "rounded-circle", width: "50px", height: "50px" %>
+    <%= image_tag "board_placeholder.png" , class: "rounded-circle", size:'50x50' %>
   </td>
   <td>
-    <h3 class="small"><%= User.find(cmt.user_id).decorate.full_name %></h3>
-      <div id="js-comment-<%= cmt.id %>">
-          <p><%= cmt.body %></p>
+    <h3 class="small"><%= User.find(comment.user_id).decorate.full_name %></h3>
+      <div id="js-comment-<%= comment.id %>">
+          <p><%= comment.body %></p>
       </div>
+      <div id="js-textarea-comment-box-<%= comment.id %>" style="display: none;">
+        <textarea id="js-textarea-comment-<%= comment.id %>" class="form-control mb-1"><%= comment.body %></textarea>
+        <button class="btn btn-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
+        <button class="btn btn-success js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
+    </div>
   </td>
-  <% if cmt.user_id == current_user.id %> 
+  <% if current_user.own?(comment) %> 
     <td class="action">
       <ul class="list-inline justify-content-center" style="float: right;">
         <li class="list-inline-item">
           <a href="#"><i class='fa fa-pencil-ruler'></i></a>
         </li>
         <li class="list-inline-item">
-          <%= link_to comment_path(cmt.id), method: :delete do %>
+          <%= link_to comment_path(comment.id), method: :delete do %>
             <span class= "fa fa-trash"></span>
           <% end %>
         </li>
