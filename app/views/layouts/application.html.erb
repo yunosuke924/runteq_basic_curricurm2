@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <% if yield(:title).present? %>
-      <title><%= yield(:title) %>| RUNTEQ BOARD APP</title>
-    <% else %>
-      <title> RUNTEQ BOARD APP </title>
-    <% end %>
-
+      <title><%= page_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
