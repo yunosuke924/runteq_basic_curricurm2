@@ -1,11 +1,11 @@
 <ul class='crud-menu-btn list-inline float-right'>
   <li class="list-inline-item">
-    <%= link_to '#', id: "button-edit-#{board.id}" do %>
+    <%= link_to edit_board_path(board), id: "button-edit-#{board.id}" do %>
       <%= icon 'fa', 'pen' %>
     <% end %>
   </li>
   <li class="list-inline-item">
-    <%= link_to '#', id: "button-delete-#{board.id}" do %>
+    <%= link_to board_path(board), method: :delete, data: {confirm: "投稿を削除しますか"}, id: "button-delete-#{board.id}" do %>
       <%= icon 'fas', 'trash' %>
     <% end %>
   </li>

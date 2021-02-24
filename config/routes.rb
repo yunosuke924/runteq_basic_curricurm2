@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   # post '/boards/:id' => 'boards#create'
 
   resources :users, only: %i[new create]
-  resources :boards, only: %i[index new create show] do
+  resources :boards, only: %i[index new create show edit update destroy] do
     resources :comments, only: %i[create destroy], shallow: true
   end
 end
