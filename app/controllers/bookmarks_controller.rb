@@ -15,9 +15,4 @@ class BookmarksController < ApplicationController
     flash[:success] = 'ブックマークを外しました'
     redirect_back(fallback_location: root_path)
   end
-
-  def boards
-    bookmarks = current_user.bookmarks.map(&:board_id)
-    @bookmarks = Board.find(bookmarks)
-  end
 end
