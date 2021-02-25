@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :boards, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
@@ -15,5 +16,9 @@ class User < ApplicationRecord
   # レシーバーのユーザーインスタンスのIDは引数のオブジェクトのuser_iと等しいかどうかを判別
   def own?(object)
     id == object.user_id
+  end
+
+  def bookmarked?(board)
+    Bookmark.find_by(board_id: board.id, user_id: id)
   end
 end

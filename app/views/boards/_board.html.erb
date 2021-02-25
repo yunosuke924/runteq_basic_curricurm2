@@ -7,11 +7,12 @@
                 <%= link_to "#{board.title}", board %>
                 </h4>
                 <% if current_user.own?(board) %>
-                    <%= render 'crud_menus', board: board %>
+                    <%= render 'boards/crud_menus', board: board %>
                 <% end %>
                 <ul class="list-inline">
                     <li class="list-inline-item"><i class="far fa-user"></i> <%= board.user.decorate.full_name %></li>
                     <li class="list-inline-item"><i class="far fa-calendar"></i><%= l board.created_at, format: :long %></li>
+                    <%= render 'bookmarks/bookmark_area', board: board %>
                 </ul>
                 <p class="card-text"><%= board.body %></p>
             </div>
