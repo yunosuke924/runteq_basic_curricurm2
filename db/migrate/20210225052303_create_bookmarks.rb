@@ -5,6 +5,8 @@ class CreateBookmarks < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
 
       t.timestamps
+      
     end
+    add_index :bookmarks, [:user_id, :board_id], unique: true
   end
 end
