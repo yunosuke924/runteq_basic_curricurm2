@@ -28,6 +28,7 @@ RSpec.describe 'コメント', type: :system do
         visit board_path board
         fill_in 'コメント', with: '新規コメント'
         click_on '投稿'
+        sleep 0.1 # sleepしないとテストが通らない
         comment = Comment.last
         within("#comment-#{comment.id}") do
           expect(page).to have_content(me.decorate.full_name), '新規作成したコメントの投稿者のフルネームが表示されていません'
@@ -39,20 +40,18 @@ RSpec.describe 'コメント', type: :system do
         visit board_path board
         fill_in 'コメント', with: ''
         click_on '投稿'
-        expect(page).to have_content('コメントを作成できませんでした'), 'コメント作成失敗時のエラーメッセージ「コメントを作成できませんでした」が表示されていません'
+        expect(page).to have_content('コメントを入力してください'), 'コメントを空で投稿した際、エラーメッセージ「コメントを入力してください」が表示されていません'
       end
     end
 
-    describe 'コメントの編集' do
-      context '他人のコメントの場合' do
-        it '編集ボタン・削除ボタンが表示されないこと' do
-          login_as_user me
-          visit board_path board
-          within("#comment-#{comment_by_others.id}") do
-            expect(page).not_to have_selector('.js-edit-comment-button'), '他人のコメントに対して編集ボタンが表示されてしまっています'
-            expect(page).not_to have_selector('.js-delete-comment-button'), '他人のコメントに対して削除ボタンが表示されてしまっています'
-          end
+    describe 'コメントの削除' do
+      it 'コメントを削除できること' do
+        login_as_user me
+        visit board_path board
+        within("#comment-#{comment_by_me.id}") do
+          page.accept_confirm { find('.js-delete-comment-button').click }
         end
+        expect(page).not_to have_content(comment_by_me.body), 'コメントの削除が正しく機能していません'
       end
     end
   end

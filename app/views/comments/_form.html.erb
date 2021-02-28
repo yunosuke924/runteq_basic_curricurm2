@@ -1,6 +1,6 @@
 <div class="row mb-3">
 <div class="col-lg-8 offset-lg-2">
-    <%= form_with model: comment, url: [board,comment], local: true do |form| %>
+    <%= form_with model: comment, url: [board,comment], remote: true, class: "js-form" do |form| %>
             <div class="form-group">
                 <%= form.label :body %>
                 <%= form.text_area :body, class: "form-control mb-3", id: 'js-new-comment-body', row: 4, placeholder: Comment.human_attribute_name(:body) %>

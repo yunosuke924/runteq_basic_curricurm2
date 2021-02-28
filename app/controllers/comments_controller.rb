@@ -1,12 +1,20 @@
 class CommentsController < ApplicationController
   def create
-    comment = current_user.comments.build(comment_params)
-    if comment.save
-      # redirect_back(fallback_location: root_path)
-      redirect_to board_path(comment.board), success: (t '.success') # 作成したコメントの対象の投稿の詳細画面に遷移
-      # flash[:success] = t '.success'
-    else
-      redirect_to board_path(comment.board), danger: (t '.fail')
+    @comment = current_user.comments.build(comment_params)
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to board_path }
+        format.js
+      else
+        format.html { render :new }
+        format.js { render :errors }
+      end
+      #   # redirect_back(fallback_location: root_path)
+      #   redirect_to board_path(comment.board), success: (t '.success') # 作成したコメントの対象の投稿の詳細画面に遷移
+      #   # flash[:success] = t '.success'
+      # else
+      #   redirect_to board_path(comment.board), danger: (t '.fail')
+      # end
     end
   end
 
@@ -14,7 +22,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     # render root_path
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   private

@@ -20,7 +20,10 @@
           <a href="#"><i class='fa fa-pencil-ruler'></i></a>
         </li>
         <li class="list-inline-item">
-          <%= link_to comment_path(comment.id), method: :delete do %>
+          <%= link_to comment_path(comment.id), remote: true,
+                                                method: :delete,
+                                                class: "js-delete-comment-button",
+                                                data: { confirm: "削除しますか？" } do %>
             <span class= "fa fa-trash"></span>
           <% end %>
         </li>
