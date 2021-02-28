@@ -19,12 +19,12 @@ class User < ApplicationRecord
     id == object.user_id
   end
 
-  #引数で渡す掲示板をブックマークする
+  # 引数で渡す掲示板をブックマークする
   def bookmark(board)
     bookmark_boards << board
   end
 
-  #引数で渡す掲示板をブックマークから外す
+  # 引数で渡す掲示板をブックマークから外す
   def unbookmark(board)
     bookmark_boards.destroy(board)
   end
