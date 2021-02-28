@@ -5,22 +5,22 @@ RSpec.describe 'ブックマーク', type: :system do
   let(:board) { create(:board, user: user) }
   before { board }
 
-  it 'ブックマークができること' do
+  it 'ブックマークができること', js: true do
     login_as_general
     visit '/boards'
     find("#js-bookmark-button-for-board-#{board.id}").click
-    expect(current_path).to eq('/boards'), 'ブックマーク作成後に、掲示板一覧画面が表示されていません'
-    expect(page).to have_content('ブックマークしました'), 'フラッシュメッセージ「ブックマークしました」が表示されていません'
+    # ボタンが切り替わること
+    expect(page).to have_css("#js-bookmark-button-for-board-#{board.id}[data-method='delete']"), 'ブックマークボタンを押した後にボタンが切り替わっていません'
   end
 
-  it 'ブックマークを外せること' do
+  it 'ブックマークを外せること', js: true do
     login_as_general
     visit '/boards'
     # ブックマークする
     find("#js-bookmark-button-for-board-#{board.id}").click
     # ブックマークを外す
     find("#js-bookmark-button-for-board-#{board.id}").click
-    expect(current_path).to eq('/boards'), 'ブックマーク解除後に、掲示板一覧画面が表示されていません'
-    expect(page).to have_content('ブックマークを外しました'), 'フラッシュメッセージ「ブックマークを外しました」が表示されていません'
+    # ボタンが切り替わること
+    expect(page).to have_css("#js-bookmark-button-for-board-#{board.id}[data-method='post']"), 'ブックマークを解除した後にボタンが切り替わっていません'
   end
 end
