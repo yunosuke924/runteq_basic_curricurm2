@@ -1,3 +1,7 @@
-$("#js-table-comment").prepend("<%= j(render('comments/comment', comment: @comment)) %>");
-$('.js-form')[0].reset();
-$('js-error-message').empty();
+ $("#error_messages").remove()
+ <% if @comment.errors.present? %>
+   $(".js-form").prepend("<%= j(render('shared/error_message', object: @comment)) %>")
+ <% else %>
+   $("#js-table-comment").prepend("<%= j(render('comments/comment', comment: @comment)) %>")
+   $("#js-new-comment-body").val('')
+ <% end %>
