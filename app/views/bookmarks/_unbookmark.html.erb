@@ -1,4 +1,7 @@
-<%= link_to bookmark_path(board), method: :delete, id: "js-bookmark-button-for-board-#{board.id}" do %>
+<%= link_to bookmark_path(current_user.bookmarks.find_by(board_id: board.id)), 
+                                                        method: :delete,
+                                                        id: "js-bookmark-button-for-board-#{board.id}",
+                                                        class:"float-right",
+                                                        remote: true do %>
     <%= icon 'fas', 'star' %>
 <% end %>
-

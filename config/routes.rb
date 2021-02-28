@@ -14,9 +14,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :bookmarks do
-    collection do
-      get :boards
-    end
-  end
+  resources :bookmarks, only: %i[ create destroy]
 end

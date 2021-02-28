@@ -14,7 +14,7 @@ class BoardsController < ApplicationController
       redirect_to boards_path, success: (t '.success')
     else
       flash.now[:danger] = t '.fail'
-      render :new
+      render :newbook
     end
   end
 
@@ -45,8 +45,9 @@ class BoardsController < ApplicationController
   end
 
   def bookmarks
-    bookmark = current_user.bookmarks.map(&:board_id)
-    @bookmarking_board = Board.find(bookmark)
+    # bookmark = current_user.bookmarks.map(&:board_id)
+    # @bookmarking_board = Board.find(bookmark)
+    @bookmark_boards = current_user.bookmark_boards.includes(:user).order(created_at: :desc)
   end
 
   private
