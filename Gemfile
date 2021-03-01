@@ -10,6 +10,7 @@ gem 'sorcery'
 gem 'rails-i18n'
 gem 'draper'
 gem 'carrierwave'
+gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
