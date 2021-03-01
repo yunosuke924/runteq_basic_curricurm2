@@ -3,14 +3,8 @@
 <div class="container pt-3">
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
-      <!-- 検索フォーム -->
-      <%= search_form_for @search, url: bookmarks_boards_path do |f| %>
-        <div class="input-group mb-3">
-          <%= f.label :title_or_body_cont %>
-          <%= f.search_field :title_or_body_cont, placeholder: "検索ワード",class: "form-control"%>
-          <%= f.submit '検索', class: "btn btn-primary" %>
-        </div>
-      <% end %>
+        <!-- 検索フォーム -->
+        <%= render 'search_form', url: bookmarks_boards_path %>
     </div>
   </div>
   <!-- 掲示板一覧 -->
@@ -18,25 +12,13 @@
   <div class="row">
     <div class="col-12">
       <div class="row">
-        <% if @search.present? %>
-          <% if @results.any? %>
-            <%= render partial: 'boards/board', collection: @results, as: :board %>
-          <% else %>
-            <p>ブックマーク中の掲示板がありません</p>
-          <% end %>
+        <% if @bookmark_boards.any? %>
+          <%= render @bookmark_boards %>
         <% else %>
-          <% if @bookmark_boards.any? %>
-              <%= render @bookmark_boards %>
-          <% else %>
-            <p>ブックマーク中の掲示板がありません</p>
-          <% end %>
+          <p>ブックマーク中の掲示板がありません</p>
         <% end %>
       </div>
     </div>
-    <% if @search.present? %>
-      <%= paginate @results %>
-    <% else %>
-      <%= paginate @boards %>
-    <% end %>
+      <%= paginate @bookmark_boards %>
   </div>
 </div>

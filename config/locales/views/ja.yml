@@ -5,6 +5,7 @@ ja:
     register: '登録'
     logout: 'ログアウト'
     post: '投稿'
+    search_word: '検索ワード'
   users:
     create:
       success: 'ユーザー登録が完了しました'

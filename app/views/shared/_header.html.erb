@@ -32,16 +32,14 @@
 
         <li class='nav-item dropdown dropdown-slide'>
           <a href='#' class='nav-link' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id='header-profile'>
-            <%= image_tag 'sample.jpg', class:'rounded-circle mr15', width: '40px', height: '40px' %>
+            <%= image_tag current_user.avatar_image.url, class:'rounded-circle mr15', size: '40x40' %>
           </a>
           <div class='dropdown-menu dropdown-menu-right'>
             <div class='dropdown-item'><%= current_user.decorate.full_name %></div>
-
             <div class='dropdown-divider'></div>
-            <a class='dropdown-item' href='#'>プロフィール</a>
-            <%= link_to "プロフィール編集", '#', class: 'dropdown-item' %>
+            <%= link_to 'プロフィール', profiles_path, class: 'dropdown-item' %>
+            <%= link_to "プロフィール編集", edit_profiles_path, class: 'dropdown-item' %>
             <%= link_to "ログアウト", :logout, method: :delete, class: 'dropdown-item' %>
-
           </div>
         </li>
       </ul>
