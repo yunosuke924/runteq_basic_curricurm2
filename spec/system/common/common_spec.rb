@@ -85,6 +85,20 @@ RSpec.describe '共通系', type: :system do
           expect(page).to have_title("#{board.title}"), '掲示板詳細ページのタイトルに「掲示板のタイトル情報」が含まれていません。'
         end
       end
+
+      describe 'プロフィールページ' do
+        it '正しいタイトルが表示されていること' do
+          visit profile_path
+          expect(page).to have_title('プロフィール'), 'プロフィールページのタイトルに「プロフィール」が含まれていません'
+        end
+      end
+
+      describe 'プロフィール編集ページ' do
+        it '正しいタイトルが表示されていること' do
+          visit edit_profile_path
+          expect(page).to have_title('プロフィール編集'), 'プロフィール編集ページのタイトルに「プロフィール編集」が含まれていません'
+        end
+      end
     end
   end
 end

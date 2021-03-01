@@ -1,9 +1,9 @@
-<% content_for(:title, 'ユーザー編集') %>
+<% content_for(:title, 'プロフィール編集') %>
 <div class="container">
     <div class="row">
         <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <h1> プロフィール編集 </h1>
-            <%= form_with(model: @user,url: profiles_path, method: :patch, local: true) do |form| %>
+            <%= form_with(model: @user,url: profile_path, method: :patch, local: true) do |form| %>
                 <%= render 'shared/error_message', object: form.object %>
                 <div class="form-group">
                     <%= form.label :email %><br/>
@@ -18,14 +18,14 @@
                     <%= form.text_field :first_name, class: "form-control" %>
                 </div>
                 <div class="field">
-                    <%= form.label :avatar_image %><br/>
+                    <%= form.label :avatar_image,'アバター' %><br/>
                     <%= form.file_field :avatar_image, onchange: 'previewImage()', class: 'form-control mb-3', accept: 'image/*' %>
                 </div>
                 <div>
                     <%= image_tag @user.avatar_image.url, id: 'preview', class:'rounded-circle mr15', size: '100x100' %>
                 </div>
                 <div class="actions">
-                    <%= form.submit (t 'defaults.register'), class: "btn btn-primary" %>
+                    <%= form.submit '更新する', class: "btn btn-primary" %>
                 </div>
             <% end %>
         </div>
