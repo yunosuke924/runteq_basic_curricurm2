@@ -13,6 +13,8 @@ ja:
           # view側： User.human_attribute_name :name => "名前" /t("activerecord.attributes.user.name")と同じ
           first_name: 名
           last_name: 姓
+          full_name: '氏名'
+          avatar_image: 'アバター'
           email: メールアドレス
           password: パスワード
           password_confirmation: パスワード確認

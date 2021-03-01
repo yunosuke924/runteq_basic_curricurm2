@@ -6,6 +6,7 @@ ja:
     logout: 'ログアウト'
     post: '投稿'
     search_word: '検索ワード'
+    edit: '編集'
   users:
     create:
       success: 'ユーザー登録が完了しました'
@@ -49,3 +50,5 @@ ja:
   profiles:
     show:
       title: 'プロフィール'
+    edit:
+      title: 'プロフィール編集'
