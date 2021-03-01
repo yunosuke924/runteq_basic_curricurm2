@@ -39,6 +39,24 @@ RSpec.describe '掲示板', type: :system do
             expect(page).to have_content(board.user.decorate.full_name), '掲示板一覧画面に投稿者のフルネームが表示されていません'
             expect(page).to have_content(board.body), '掲示板一覧画面に掲示板の本文が表示されていません'
           end
+
+          context '20件以下の場合' do
+            let!(:boards) { create_list(:board, 20) }
+            it 'ページングが表示されないこと' do
+              login_as_general
+              visit boards_path
+              expect(page).not_to have_selector('.pagination')
+            end
+          end
+
+          context '21件以上ある場合' do
+            let!(:boards) { create_list(:board, 21) }
+            it 'ページングが表示されること' do
+              login_as_general
+              visit boards_path
+              expect(page).to have_selector('.pagination'), '掲示板一覧画面において掲示板が21件以上ある場合に、ページネーションのリンクが表示されていません'
+            end
+          end
         end
       end
     end
@@ -194,6 +212,26 @@ RSpec.describe '掲示板', type: :system do
           click_on 'ブックマーク一覧'
           expect(current_path).to eq(bookmarks_boards_path), '課題で指定した形式のリンク先に遷移させてください'
           expect(page).to have_content board.title
+        end
+      end
+
+      context '20件以下の場合' do
+        let!(:boards) { create_list(:board, 20) }
+        it 'ページングが表示されないこと' do
+          boards.map { |board| Bookmark.create(user: user, board: board) }
+          login_as_user user
+          visit bookmarks_boards_path
+          expect(page).not_to have_selector('.pagination'), 'ブックマーク一覧画面において掲示板が20件以下の場合、ページネーションを表示させてはいけません'
+        end
+      end
+
+      context '21件以上ある場合' do
+        let!(:boards) { create_list(:board, 21) }
+        it 'ページングが表示されること' do
+          boards.map { |board| Bookmark.create(user: user, board: board) }
+          login_as_user user
+          visit bookmarks_boards_path
+          expect(page).to have_selector('.pagination'), 'ブックマーク一覧画面において掲示板が21件以上ある場合、ページネーションが表示されていません'
         end
       end
     end
