@@ -4,24 +4,38 @@
   <div class="row">
     <div class="col-lg-10 offset-lg-1">
       <!-- 検索フォーム -->
-      <form>
-        <div class="input-group mb-3"><input class="form-control" placeholder="検索ワード" type="search"/>
-          <div class="input-group-append"><input type="submit" value="検索" class="btn btn-primary"/></div>
+      <%= search_form_for @search, url: boards_path do |f| %>
+        <div class="input-group mb-3">
+          <%= f.label :title_or_body_cont %>
+          <%= f.search_field :title_or_body_cont, placeholder: "検索ワード",class: "form-control"%>
+          <%= f.submit '検索', class: "btn btn-primary" %>
         </div>
-      </form>
+      <% end %>
     </div>
   </div>
   <!-- 掲示板一覧 -->
+
   <div class="row">
     <div class="col-12">
       <div class="row">
-        <% if @boards.any? %>
-            <%= render @boards %>
+        <% if @results.any? %>
+          <%= render partial: 'boards/board', collection: @results, as: :board %>
         <% else %>
-          <p>掲示板がありません</p>
+          <% if @boards.any? %>
+              <%= render @boards %>
+          <% else %>
+            <p>掲示板がありません</p>
+          <% end %>
         <% end %>
       </div>
-      <%= paginate @boards %>
     </div>
+    <% if @results.any? %>
+      <%= paginate @results %>
+    <% else %>
+      <%= paginate @boards %>
+    <% end %>
   </div>
 </div>
+
+
+
