@@ -6,7 +6,7 @@
       <!-- 検索フォーム -->
       <%= search_form_for @search, url: boards_path do |f| %>
         <div class="input-group mb-3">
-          <%= f.label :title_or_body_cont %>
+          <%= f.label :title_cont %>
           <%= f.search_field :title_or_body_cont, placeholder: "検索ワード",class: "form-control"%>
           <%= f.submit '検索', class: "btn btn-primary" %>
         </div>
@@ -18,8 +18,12 @@
   <div class="row">
     <div class="col-12">
       <div class="row">
-        <% if @results.any? %>
-          <%= render partial: 'boards/board', collection: @results, as: :board %>
+        <% if @search.present? %>
+          <% if @results.any? %>
+            <%= render partial: 'boards/board', collection: @results, as: :board %>
+          <% else %>
+            <p>掲示板がありません</p>
+          <% end %>
         <% else %>
           <% if @boards.any? %>
               <%= render @boards %>
@@ -29,7 +33,7 @@
         <% end %>
       </div>
     </div>
-    <% if @results.any? %>
+    <% if @search.present? %>
       <%= paginate @results %>
     <% else %>
       <%= paginate @boards %>

@@ -18,21 +18,25 @@
   <div class="row">
     <div class="col-12">
       <div class="row">
-        <% unless @results.any? %>
-          <% if @bookmark_boards.present? %>
-            <%= render @bookmark_boards %>
+        <% if @search.present? %>
+          <% if @results.any? %>
+            <%= render partial: 'boards/board', collection: @results, as: :board %>
+          <% else %>
+            <p>掲示板がありません</p>
+          <% end %>
+        <% else %>
+          <% if @bookmark_boards.any? %>
+              <%= render @bookmark_boards %>
           <% else %>
             <p>ブックマーク中の掲示板がありません</p>
           <% end %>
-        <% else %>
-          <%= render partial: 'boards/board', collection: @results, as: :board %>
         <% end %>
       </div>
-    <% if @results.any? %>
+    </div>
+    <% if @search.present? %>
       <%= paginate @results %>
     <% else %>
       <%= paginate @boards %>
     <% end %>
-    </div>
   </div>
 </div>
