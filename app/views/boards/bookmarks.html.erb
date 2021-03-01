@@ -22,7 +22,7 @@
           <% if @results.any? %>
             <%= render partial: 'boards/board', collection: @results, as: :board %>
           <% else %>
-            <p>掲示板がありません</p>
+            <p>ブックマーク中の掲示板がありません</p>
           <% end %>
         <% else %>
           <% if @bookmark_boards.any? %>
