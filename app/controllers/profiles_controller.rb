@@ -1,10 +1,8 @@
 class ProfilesController < ApplicationController
   before_action :set_user, only: %i[edit update show]
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)

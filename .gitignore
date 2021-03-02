@@ -34,3 +34,7 @@
 # Ignore sqlite3 files
 db/runteq_normal_development
 db/runteq_normal_test
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml

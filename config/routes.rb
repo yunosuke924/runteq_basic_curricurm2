@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'password_resets/create'
+  get 'password_resets/edit'
+  get 'password_resets/update'
   root to: 'static_pages#top'
 
   get 'login' => 'user_sessions#new', :as => :login
@@ -14,4 +17,7 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
+  resources :password_resets, only: %i[create edit update new]
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' # if Rails.env.development?
 end

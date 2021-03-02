@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+      <h1>パスワードリセット</h1>
+      <%= form_for @user, :url => password_reset_path(@token), :html => {:method => :put} do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          
+            <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+          
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= @user.email %>
+        </div>
+        <div class="form-group">
+            <%= f.label :password %><br/>
+            <%= f.password_field :password, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :password_confirmation %><br/>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
+        </div>
+        <div class="actions">
+          <%= f.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
