@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' # if Rails.env.development?
+  
   get 'password_resets/create'
   get 'password_resets/edit'
   get 'password_resets/update'
@@ -19,5 +21,4 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[create edit update new]
 
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' # if Rails.env.development?
 end
