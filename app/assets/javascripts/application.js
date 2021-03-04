@@ -15,4 +15,5 @@
 //= require activestorage
 //= require popper
 //= require bootstrap-sprockets
-//= require_tree .
+//= cable.js
+//= commmon.js

@@ -19,4 +19,11 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[create destroy]
   resource :profile, only: %i[show edit update]
   resources :password_resets, only: %i[create edit update new]
+
+  namespace :admin do
+    root to: 'dashboards#index'
+    get 'login' => 'user_sessions#new'
+    post 'login' => 'user_sessions#create'
+    delete 'login' => 'user_sessions#destroy'
+  end
 end

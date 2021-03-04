@@ -1,5 +1,7 @@
 {
   "name": "runteq_normal",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "admin-lte": "^3.0"
+  }
 }
