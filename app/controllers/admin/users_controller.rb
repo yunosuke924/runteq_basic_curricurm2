@@ -11,14 +11,14 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to admin_root_path
+    redirect_to admin_users_path, success: 'ユーザーを削除しました'
   end
 
   def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to edit_admin_user_path, success: '更新しました'
+      redirect_to admin_user_path, success: 'ユーザーを更新しました'
     else
       render :edit
     end

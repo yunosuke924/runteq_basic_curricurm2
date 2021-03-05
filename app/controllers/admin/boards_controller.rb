@@ -1,5 +1,5 @@
 class Admin::BoardsController < ApplicationController
-  before_action :set_board, only: %i[show destory edit update]
+  before_action :set_board, only: %i[show destroy edit update]
   layout 'admin/layouts/admin'
   def index
     # @boards = Board.all
@@ -12,14 +12,14 @@ class Admin::BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    redirect_to admin_root_path
+    redirect_to admin_boards_path, success: '掲示板を削除しました'
   end
 
   def edit; end
 
   def update
     if @board.update(board_params)
-      redirect_to edit_admin_board_path, success: '更新しました'
+      redirect_to admin_board_path, success: '掲示板を更新しました'
     else
       render :edit
     end
