@@ -1,0 +1,8 @@
+<%= search_form_for @q, url: admin_users_path do |f| %>
+  <div class="input-group mb-3">
+    <%= f.label :last_name_or_first_name_cont, style: "display: none;" %>
+    <%= f.search_field :last_name_or_first_name_cont, placeholder: "検索ワード",class: "form-control"%>
+    <%= f.select :role_eq, [['一般', 0 ],['管理者', 1 ]], {include_blank: '未選択'}, class: 'btn btn-info dropdown-toggle' %>
+    <%= f.submit '検索', class: "btn btn-primary" %>
+  </div>
+<% end %>

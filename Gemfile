@@ -13,6 +13,7 @@ gem 'carrierwave'
 gem 'kaminari'
 gem 'ransack'
 gem 'config'
+gem 'enum_help'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

@@ -1,11 +1,17 @@
 class Admin::BaseController < ApplicationController
-  skip_before_action :require_login
+  layout 'admin/layouts/admin'
+  before_action :require_admin
+  before_action :set_current_user
+  def not_authenticated
+    flash[:warning] = 'ログインしてください'
+    redirect_to admin_login_path
+  end
 
   def require_admin
-    if current_user.present?
-      redirect_to root_path, success: '権限がありません' if current_user.general?
-    else
-      redirect_to root_path, success: '権限がありません'
-    end
+    redirect_to root_path, warning: '権限がありません' if current_user.general?
+  end
+
+  def set_current_user
+    @current_user = User.find(current_user.id)
   end
 end

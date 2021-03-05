@@ -1,0 +1,36 @@
+<% content_for(:title, 'ユーザー詳細') %>
+<div class="container">	
+	<div class="row">
+		<div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+		<h1>ユーザー詳細</h1>
+		<div class="text-right mb-3">
+			<a class="btn btn-success" href="/admin/users/<%= @user.id %>/edit">編集</a>
+			<a data-confirm="削除しますか？" class="btn btn-danger" rel="nofollow" data-method="delete" href="/admin/users/<%= @user.id %>">削除</a>
+		</div>
+		<table class="table table-bordered bg-white">
+			<tbody><tr>
+			<th scope="row">ID</th>
+			<td><%= @user.id %></td>
+			</tr>
+			<tr>
+			<th scope="row">氏名</th>
+			<td><%= @user.decorate.full_name %></td>
+			</tr>
+			<tr>
+			<th scope="row">権限</th>
+			<td><%= I18n.t("enums.user.role.#{@user.role}") %></td>
+			</tr>
+			<tr>
+			<th scope="row">アバター</th>
+			<td><%= image_tag @user.avatar_image.url, size: '100x100', class: "rounded-circle"  %></td>
+				
+			</tr>
+			<tr>
+			<th scope="row">作成日時</th>
+			<td><%= @user.created_at %></td>
+			</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>

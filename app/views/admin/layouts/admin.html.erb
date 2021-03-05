@@ -13,7 +13,15 @@
     </head>
 
     <body class="hold-transition sidebar-mini layout-fixed">
-        <%= yield %>
-        <%= javascript_include_tag 'admin' %>
+        <div class="wrapper">
+            <%= render 'admin/shared/header' %>
+            <%= render 'admin/shared/sidebar' %>
+            <div class="content-wrapper">
+            <%= render 'shared/flash_message' %>
+                <%= yield %>
+            </div>
+            <%= render 'admin/shared/footer' %>
+            <%= javascript_include_tag 'admin' %>
+        </div>
     </body>
 </html>

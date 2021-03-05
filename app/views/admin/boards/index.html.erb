@@ -1,0 +1,28 @@
+<% content_for(:title, '掲示板一覧') %>
+<div class="container">
+	<%= render 'search_form' %>
+  <div class="row">
+		<table class="table">
+			<thead>
+				<tr>
+				<th scope="col">ID</th>
+				<th scope="col">タイトル</th>
+				<th scope="col">作成者</th>
+				<th scope="col">作成日</th>
+				</tr>
+			</thead>
+				<tbody>
+				<% @boards.each do |board| %>
+					<tr>
+					<th scope="row"><%= board.id %></th>
+					<td><%= link_to "#{board.title}", admin_board_path(board) %></td>
+					<td><%= board.user.decorate.full_name %></td>
+					<td><%= board.created_at %></td>
+					<td><%= link_to '編集',edit_admin_board_path(board), class: "btn btn-success" %></td>
+					<td><%= link_to '削除', admin_board_path(board), method: :delete, class: "btn btn-danger", data: { confirm: '削除しますか?' } %></td>
+					</tr>
+				<% end %>
+				</tbody>
+		</table>
+  </div>
+</div>

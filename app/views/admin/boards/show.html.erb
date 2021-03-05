@@ -1,0 +1,39 @@
+<% content_for(:title, "#{@board.title}") %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+        <h1>掲示板詳細</h1>
+        <div class="text-right mb-3">
+            <a class="btn btn-success" href="/admin/boards/<%= @board.id %>/edit">編集</a>
+            <a data-confirm="削除しますか？" class="btn btn-danger" rel="nofollow" data-method="delete" href="/admin/boards/<%= @board.id %>">削除</a>
+        </div>
+        <table class="table table-bordered bg-white">
+            <tbody><tr>
+            <th scope="row">ID</th>
+            <td><%= @board.id %></td>
+            </tr>
+            <tr>
+            <th scope="row">タイトル</th>
+            <td><%= @board.title %></td>
+            </tr>
+            <tr>
+            <th scope="row">作成者</th>
+            <td><%= @board.user.decorate.full_name %></td>
+            </tr>
+            <tr>
+            <th scope="row">本文</th>
+            <td><%= @board.body %></td>
+            </tr>
+            <tr>
+            <th scope="row">画像</th>
+            <td><%= image_tag @board.board_image.url, size: '300x200' %></td>
+            </tr>
+            <tr>
+            <th scope="row">作成日時</th>
+            <td><%= @board.created_at %></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
