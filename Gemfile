@@ -14,6 +14,8 @@ gem 'kaminari'
 gem 'ransack'
 gem 'config'
 gem 'enum_help'
+gem 'exception_notification'
+gem 'slack-notifier'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

@@ -1,8 +1,15 @@
-<%= search_form_for @q, url: admin_users_path do |f| %>
-  <div class="input-group mb-3">
-    <%= f.label :first_name_or_last_name_cont, style: "display: none;" %>
-    <%= f.search_field :first_name_or_last_name_cont, placeholder: "検索ワード",class: "form-control"%>
-    <%= f.select :role_eq, [['一般', 0 ],['管理者', 1 ]], {include_blank: '未選択'}, class: 'btn btn-info dropdown-toggle' %>
-    <%= f.submit '検索', class: "btn btn-primary" %>
-  </div>
-<% end %>
+ <%= search_form_for @q, url: admin_users_path do |f| %>
+   <div class="row">
+     <div class="form-inline align-items-center mx-auto">
+       <div class="col-auto">
+         <%= f.search_field :first_name_or_last_name_cont, class: 'form-control', placeholder: '検索ワード' %>
+       </div>
+       <div class="col-auto">
+         <%= f.select :role_eq, User.roles_i18n.invert.map{|key, value| [key, User.roles[value]]}, { include_blank: '未選択' }, { class: 'form-control mr-1' } %>
+       </div>
+       <div class="col-auto">
+         <%= f.submit class: 'btn btn-primary' %>
+       </div>
+     </div>
+   </div>
+ <% end %>

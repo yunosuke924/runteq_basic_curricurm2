@@ -4,7 +4,7 @@
         <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <h1>ユーザー編集</h1>
             
-            <%= form_with(model: @user, url: admin_user_path, method: :patch, local: true) do |f|  %>
+            <%= form_with(model: @user, url: admin_user_path, local: true) do |f|  %>
                 <div class="form-group">
                     <%= f.label :email %><br/>
                     <%= f.text_field :email, class: "form-control" %>

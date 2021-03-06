@@ -7,6 +7,9 @@ ja:
     post: '投稿'
     search_word: '検索ワード'
     edit: '編集'
+    delete: '削除'
+    password_reset: 'パスワードリセット'
+    unspecified: '指定なし'
   users:
     create:
       success: 'ユーザー登録が完了しました'
@@ -52,3 +55,4 @@ ja:
       title: 'プロフィール'
     edit:
       title: 'プロフィール編集'
+  

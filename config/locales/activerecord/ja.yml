@@ -15,6 +15,7 @@ ja:
           last_name: 姓
           full_name: '氏名'
           avatar_image: 'アバター'
+          role: '権限'
           email: メールアドレス
           password: パスワード
           password_confirmation: パスワード確認
@@ -23,6 +24,7 @@ ja:
           title: タイトル
           body: 本文
           board_image: サムネイル
+          user: '作成者'
         comment:
           body: コメント
   # 全てのmodelで共通して使用するattributesを定義

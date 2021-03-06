@@ -129,6 +129,9 @@ GEM
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
+    exception_notification (4.4.3)
+      actionmailer (>= 4.0, < 7)
+      activesupport (>= 4.0, < 7)
     execjs (2.7.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
@@ -319,6 +322,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    slack-notifier (2.3.2)
     sorcery (0.16.0)
       bcrypt (~> 3.1)
       oauth (~> 0.4, >= 0.4.4)
@@ -371,6 +375,7 @@ DEPENDENCIES
   config
   draper
   enum_help
+  exception_notification
   factory_bot_rails
   faker
   font-awesome-sass
@@ -391,6 +396,7 @@ DEPENDENCIES
   rubocop-checkstyle_formatter
   rubocop-rails
   sass-rails (~> 5.0)
+  slack-notifier
   sorcery
   spring
   spring-watcher-listen (~> 2.0.0)

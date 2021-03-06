@@ -3,8 +3,8 @@ class Admin::UsersController < ApplicationController
   layout 'admin/layouts/admin'
   def index
     @q = User.ransack(params[:q])
-    @users = @q.result(distinct: true).order(created_at: :desc)
-    # debugger
+    @users = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(10)
+    # 一旦避難 .page(params[:page])
   end
 
   def show; end

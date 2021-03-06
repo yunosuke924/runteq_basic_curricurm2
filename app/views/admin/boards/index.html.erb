@@ -1,8 +1,9 @@
 <% content_for(:title, '掲示板一覧') %>
-<div class="container">
+<div class="container mb-5 pt-2">
 	<%= render 'search_form' %>
   <div class="row">
-		<table class="table">
+  <div class="col-sm-12">
+		<table class="table table-striped">
 			<thead>
 				<tr>
 				<th scope="col">ID</th>
@@ -24,5 +25,12 @@
 				<% end %>
 				</tbody>
 		</table>
-  </div>
+	</div>
+  	</div>
+     <div class="row">
+     <div class="col-sm-12">
+       <!-- ページネーション -->
+       <%= paginate @boards %>
+     </div>
+   </div>
 </div>

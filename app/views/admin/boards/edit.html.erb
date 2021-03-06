@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
         <h1>掲示板編集</h1>
-            <%= form_with(model: @board, url: admin_board_path, method: :patch, local: true) do |f|  %>
+            <%= form_with(model: @board, url: admin_board_path, local: true) do |f|  %>
                 <div class="form-group">
                     <%= f.label :title %><br/>
                     <%= f.text_field :title, class: "form-control" %>
