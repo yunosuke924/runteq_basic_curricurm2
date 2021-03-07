@@ -5,9 +5,11 @@ class ApplicationController < ActionController::Base
   rescue_from StandardError, with: :handle500 unless Rails.env.development?
   rescue_from ActiveRecord::RecordNotFound, with: :handle404 unless Rails.env.development?
 
+  private
+
   def handle404
     # unless Rails.env.development?
-    render file: 'public/404.html', status: 404, layout: 'application'
+    render file: 'public/404.html', status: :not_found, layout: 'application'
   end
 
   def handle500(error)
@@ -17,10 +19,8 @@ class ApplicationController < ActionController::Base
     logger.info(error)
     ExceptionNotifier.notify_exception(e, env: request.env,
                                           data: { message: 'error' })
-    render file: 'public/500.html', status: 500, layout: 'application'
+    render file: 'public/500.html', status: :internal_server_error, layout: 'application'
   end
-
-  private
 
   def not_authenticated
     redirect_to login_path, danger: 'ログインしてください'
