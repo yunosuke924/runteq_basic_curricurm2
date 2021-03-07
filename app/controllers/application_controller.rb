@@ -7,8 +7,7 @@ class ApplicationController < ActionController::Base
 
   def handle404
     # unless Rails.env.development?
-    render file: Rails.root.join('publc/404'),
-           status: :not_found, layout: false
+    render file: 'public/404.html', status: 404, layout: 'application'
   end
 
   def handle500(error)
@@ -18,8 +17,7 @@ class ApplicationController < ActionController::Base
     logger.info(error)
     ExceptionNotifier.notify_exception(e, env: request.env,
                                           data: { message: 'error' })
-    render file: Rails.root.join('public/500'),
-           status: :internal_server_error, layout: false
+    render file: 'public/500.html', status: 500, layout: 'application'
   end
 
   private
